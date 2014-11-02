@@ -1,0 +1,17 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+      "folder_exclude_patterns": ["build", ".gradle"]
+		},
+    {
+      "path": "./src/main/java",
+      "name": "Source Files"
+    },
+    {
+      "path": "./src/test/java/",
+      "name": "Test Suite"
+    }
+	],
+}

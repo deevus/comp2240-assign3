@@ -1,0 +1,9 @@
+#sublime
+*.sublime-workspace
+
+#gradle
+build/
+.gradle/
+
+#temp files
+*~
