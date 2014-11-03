@@ -10,3 +10,26 @@ repositories {
 dependencies {
   testCompile 'junit:junit:4.11'
 }
+
+sourceSets {
+  test {
+    resources {
+      srcDir 'src/resources'
+    }
+  }
+  main {
+    resources {
+      srcDir 'src/resources'
+    }
+  }
+}
+
+run {
+  args Eval.me("[" + 
+    "'build/resources/main/process1.txt', " +
+    "'build/resources/main/process2.txt'," +
+    "'build/resources/main/process3.txt', " +
+    "'build/resources/main/process4.txt', " +
+    "'build/resources/main/process5.txt', " +
+    "]")
+}

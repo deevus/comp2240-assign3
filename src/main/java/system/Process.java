@@ -1,4 +1,4 @@
-package scheduling;
+package system;
 
 import java.util.Queue;
 import java.util.LinkedList;
@@ -47,7 +47,7 @@ public class Process {
     }
     catch (Exception e) {
       //todo: do something
-      Logger.getLogger("scheduling.process").log(Level.SEVERE, "Loading from file", e);
+      Logger.getLogger("scheduling.process").log(Level.WARNING, "Loading from file", e);
     }
 
     //something went wrong

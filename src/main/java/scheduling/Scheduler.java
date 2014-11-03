@@ -11,18 +11,15 @@ public abstract class Scheduler {
     isRunning = false;
   }
 
-  public void start() {
+  public void start(List<system.Process> newProcesses) {
     isRunning = true;
     currentTick = -1;
-
+    this.processIncoming(newProcesses);
     this.onStart();
   }
 
-  public void tick(List<Process> newProcesses) {
+  public void tick() {
     ++currentTick;
-
-    this.processIncoming(newProcesses);
-
     this.onTick();
   }
 
@@ -32,7 +29,7 @@ public abstract class Scheduler {
     this.onStop();
   }
 
-  abstract void processIncoming(List<Process> newProcesses);
+  abstract void processIncoming(List<system.Process> newProcesses);
   abstract void onTick();
   abstract void onStart();
   abstract void onStop();
