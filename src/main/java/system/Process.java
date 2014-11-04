@@ -6,13 +6,24 @@ import java.io.File;
 import java.util.Scanner;
 
 public class Process {
+  public enum ProcessState {
+    Ready,
+    Blocked,
+    Finished
+  }
+
+  private ProcessState state;
   private Queue<Integer> instructions;
+  private List<PageFault> pageFaults;
   private static int _id = 0;
   private int id;
+  private Integer finishTime = null;
 
   public Process(Queue<Integer> instructions, int id) { 
     this.instructions = instructions;
     this.id = id;
+    this.pageFaults = new ArrayList<>();
+    this.state = ProcessState.Ready;
   }
 
   /**
@@ -61,12 +72,36 @@ public class Process {
       return new Process(instructions, ++_id);
     }
     catch (Exception e) {
-      //todo: do something
       System.out.println(String.format("Error loading from file %s; %s", filePath, e.getMessage()));
     }
 
     //something went wrong
     return null;
+  }
+
+  public ProcessState getState() {
+    return state;
+  }
+  
+  public void setState(ProcessState state){
+    this.state = state;
+  }
+
+  public int getFinishTime() {
+    return finishTime;
+  }
+  
+  public void setFinishTime(int finishTime){
+    this.finishTime = finishTime;
+  }
+
+  public void addPageFault(int tick) {
+    PageFault pageFault = new PageFault(this, tick);
+    this.pageFaults.add(pageFault);
+  }
+
+  public List<PageFault> getPageFaults() {
+    return pageFaults;
   }
 
   @Override

@@ -16,13 +16,6 @@ public class FixedAllocationStrategy extends AllocationStrategy {
       }
       framesPerProcess = 1;
     }
-
-    for (ProcessFrame pf: this.getFrames()) {
-      System.out.println(
-        String.format("Process %s has %d max pages", 
-          pf.getProcess(), pf.getMaximumPages())
-        );
-    }
   }
 
 }

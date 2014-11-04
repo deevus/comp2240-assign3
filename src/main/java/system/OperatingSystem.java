@@ -33,7 +33,7 @@ public class OperatingSystem {
     for (Process p: processes) {
       frames.add(new ProcessFrame(p));
     }
-    System.out.println(String.format("Init %d process frames.", frames.size()));
+//    System.out.println(String.format("Init %d process frames.", frames.size()));
   }
 
   public boolean isPaged(Process p, int i) {
@@ -91,9 +91,33 @@ public class OperatingSystem {
         if (!p.isLoaded()) {
           int ticks = p.getTicksTillLoaded() - 1;
           p.setTicksTillLoaded(ticks);
+
+          //check if now loaded
+          if (p.isLoaded()) {
+            //update process state
+            p.getProcess().setState(Process.ProcessState.Ready);
+          }
         }
       }
     }
+  }
+
+  public String report() {
+    String result = "";
+    for (ProcessFrame pf: this.frames) {
+      Process p = pf.getProcess();
+      String heading = String.format("Process %s: %d page faults, completed in %d ticks\r\n", p, p.getPageFaults().size(), p.getFinishTime());
+      result += heading;
+      for (int i = 1; i < heading.length() - 1; i++) {
+        result += "=";
+      }
+      result += "\r\n";
+      for (PageFault pageFault: p.getPageFaults()) {
+        result += String.format("\t\tPage Fault @ Tick #%d\r\n", pageFault.getTick());
+      }
+    }
+
+    return result;
   }
 
 }

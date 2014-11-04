@@ -15,17 +15,25 @@ public class Assignment3 {
       if (p != null)
         processes.add(p);
     }
-    System.out.println("Loaded " + processes.size() + " process(es) from file");
+//    System.out.println("Loaded " + processes.size() + " process(es) from file");
 
     if (!processes.isEmpty()) {
       //create the scheduler
-      Scheduler scheduler = new RoundRobinScheduler();
 
       //start os
+      Scheduler scheduler = new RoundRobinScheduler();
       AllocationStrategy strategy = new FixedAllocationStrategy();
       PageReplacementAlgorithm algorithm = new LRUPageReplacement();
+
+      System.out.println();
+      System.out.println("====================================");
+      System.out.println("Fixed Allocation / Local Replacement");
+      System.out.println("--------LRU Page Replacement--------");
+      System.out.println("====================================");
       OperatingSystem os = new OperatingSystem(scheduler, strategy, algorithm);
       os.run(processes);
+
+      System.out.print(os.report());
     }
   }
 }
