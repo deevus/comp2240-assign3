@@ -58,14 +58,25 @@ public class Process {
       while (s.hasNextLine())
         data.add(s.nextLine().toLowerCase().trim());
 
+      //find begin and end
+      int beginIndex = -1;
+      int endIndex = -1;
+      for (int i = 0; i < data.size(); i++) {
+        if (data.get(i).equals("begin")) beginIndex = i;
+        if (data.get(i).equals("end")) endIndex = i;
+        if (beginIndex > 0 && endIndex > 0) break;
+      }
+
+      //find end
+
       //assertions
-      if (!data.get(0).equals("begin")) 
+      if (beginIndex == -1)
         throw new IllegalStateException("Invalid file format: begin not found.");
-      if (!data.get(data.size() - 1).equals("end"))
+      if (endIndex == -1)
         throw new IllegalStateException("Invalid file format: end not found.");
 
       Queue<Integer> instructions = new LinkedList<Integer>();
-      for (int i = 1; i < data.size() - 1; i++) {
+      for (int i = beginIndex + 1; i < endIndex; i++) {
         instructions.offer(Integer.parseInt(data.get(i)));
       }
 
