@@ -14,4 +14,15 @@
       "name": "Test Suite"
     }
 	],
+  "build_systems": 
+  [
+    {
+      "name": "gradle",
+      "cmd": ["gradle", "build"],
+      "windows": {
+        "cmd": ["gradle.cmd", "build"]
+      },
+      "working_dir": "${project_path}"
+    }
+  ]
 }

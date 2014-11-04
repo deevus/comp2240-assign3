@@ -1,17 +1,20 @@
 package scheduling;
 
 import java.util.List;
+import system.Process;
+import system.OperatingSystem;
 
 public abstract class Scheduler {
   private boolean isRunning;
-  private Process currentProcess;
+  protected Process currentProcess;
   private int currentTick;
+  protected OperatingSystem system;
 
   public Scheduler() {
     isRunning = false;
   }
 
-  public void start(List<system.Process> newProcesses) {
+  public void start(List<Process> newProcesses) {
     isRunning = true;
     currentTick = -1;
     this.processIncoming(newProcesses);
@@ -29,7 +32,7 @@ public abstract class Scheduler {
     this.onStop();
   }
 
-  abstract void processIncoming(List<system.Process> newProcesses);
+  abstract void processIncoming(List<Process> newProcesses);
   abstract void onTick();
   abstract void onStart();
   abstract void onStop();
@@ -56,5 +59,13 @@ public abstract class Scheduler {
   
   protected void setCurrentTick(int currentTick){
     this.currentTick = currentTick;
+  }
+
+  public OperatingSystem getOperatingSystem() {
+    return system;
+  }
+  
+  public void setOperatingSystem(OperatingSystem system){
+    this.system = system;
   }
 }

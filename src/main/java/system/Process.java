@@ -1,26 +1,32 @@
 package system;
 
-import java.util.Queue;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 import java.lang.IllegalStateException;
 import java.util.logging.*;
 import java.io.File;
 import java.util.Scanner;
 
 public class Process {
-  private Queue<Integer> pageRequests;
+  private Queue<Integer> instructions;
 
-  public Process(Queue<Integer> pageRequests) { 
-    this.pageRequests = pageRequests;
+  public Process(Queue<Integer> instructions) { 
+    this.instructions = instructions;
+  }
+
+  /**
+   * Executes the next instruction
+   * @param instruction [description]
+   */
+  public void executeInstruction() {
+    this.instructions.poll();
   }
 
   public boolean isDone() {
-    return this.pageRequests.isEmpty(); 
+    return this.instructions.isEmpty(); 
   }
 
-  public int nextPage() {
-    return this.pageRequests.poll();
+  public int nextInstruction() {
+    return this.instructions.peek();
   }
 
   public static Process fromFile(String filePath) {
@@ -30,7 +36,7 @@ public class Process {
 
       List<String> data = new LinkedList<String>();
       while (s.hasNextLine())
-        data.add(s.nextLine());
+        data.add(s.nextLine().toLowerCase().trim());
 
       //assertions
       if (!data.get(0).equals("begin")) 
@@ -38,12 +44,12 @@ public class Process {
       if (!data.get(data.size() - 1).equals("end"))
         throw new IllegalStateException("Invalid file format: end not found.");
 
-      Queue<Integer> pageRequests = new LinkedList<Integer>();
+      Queue<Integer> instructions = new LinkedList<Integer>();
       for (int i = 1; i < data.size() - 1; i++) {
-        pageRequests.offer(Integer.parseInt(data.get(i)));
+        instructions.offer(Integer.parseInt(data.get(i)));
       }
 
-      return new Process(pageRequests);
+      return new Process(instructions);
     }
     catch (Exception e) {
       //todo: do something

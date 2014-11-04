@@ -1,5 +1,5 @@
 import scheduling.*;
-import system.OperatingSystem;
+import system.*;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.logging.Logger;
@@ -22,7 +22,8 @@ public class Assignment3 {
       Scheduler scheduler = new RoundRobinScheduler();
 
       //start os
-      OperatingSystem os = new OperatingSystem(scheduler);
+      AllocationStrategy strategy = new FixedAllocationStrategy();
+      OperatingSystem os = new OperatingSystem(scheduler, strategy);
       os.run(processes);
     }
   }
