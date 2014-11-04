@@ -2,13 +2,13 @@ package system;
 
 import java.util.List;
 
-public class VariableAllocationStrategy implements AllocationStrategy {
+public class VariableAllocationStrategy extends AllocationStrategy {
   public VariableAllocationStrategy() {
 
   }
 
   @Override
-  public void allocateFrames(List<system.Process> processes, int availableFrames) {
+  public void allocateFrames(int availableFrames) {
 
   }
 }

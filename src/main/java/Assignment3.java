@@ -15,7 +15,7 @@ public class Assignment3 {
       if (p != null)
         processes.add(p);
     }
-    logger.info("Loaded " + processes.size() + " process(es) from file");
+    System.out.println("Loaded " + processes.size() + " process(es) from file");
 
     if (!processes.isEmpty()) {
       //create the scheduler

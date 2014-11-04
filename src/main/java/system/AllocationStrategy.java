@@ -2,6 +2,16 @@ package system;
 
 import java.util.List;
 
-public interface AllocationStrategy {
-  void allocateFrames(List<system.Process> processes, int availableFrames);
+public abstract class AllocationStrategy {
+  protected List<ProcessFrame> frames;
+
+  public abstract void allocateFrames(int availableFrames);
+
+  public List<ProcessFrame> getFrames() {
+    return frames;
+  }
+  
+  public void setFrames(List<ProcessFrame> frames){
+    this.frames = frames;
+  }
 }

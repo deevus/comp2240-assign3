@@ -44,6 +44,10 @@ public class Page {
 
   @Override
   public boolean equals(Object other) {
+    if (other instanceof ProcessFrame) {
+      return other.equals(this);
+    }
+
     if (other instanceof Page) {
       Page that = (Page)other;
       return 

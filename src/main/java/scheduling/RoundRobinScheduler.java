@@ -3,7 +3,7 @@ package scheduling;
 import java.util.Queue;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.logging.Logger;
+import java.util.logging.*;
 import system.*;
 
 public class RoundRobinScheduler extends Scheduler {
@@ -27,26 +27,28 @@ public class RoundRobinScheduler extends Scheduler {
 
   @Override
   void onStart() {
-    logger.info("Scheduler Started.");
+    System.out.println("Scheduler Started.");
   }
 
   @Override
   void onStop() {
-    logger.info(String.format("Scheduler stopped after %d ticks.", this.getCurrentTick()));
+    System.out.println(String.format("Scheduler stopped after %d ticks.", this.getCurrentTick()));
   }
 
   @Override
   void onTick() {
-    logger.fine(String.format("Scheduler Tick #%d.", this.getCurrentTick()));
+    System.out.println(String.format("Scheduler Tick #%d.", this.getCurrentTick()));
 
     if (currentProcess != null) {
       boolean doBlock = false;
       timeSliceLeft--;
 
       if (system.isPaged(currentProcess, currentProcess.nextInstruction())) {
+        System.out.println(String.format("Process %s executed instruction %d", currentProcess, currentProcess.nextInstruction()));
         currentProcess.executeInstruction();
       }
       else {
+        System.out.println(String.format("Process %s instruction %d not loaded. Blocking.", currentProcess, currentProcess.nextInstruction()));
         //block the process
         doBlock = true;
 
@@ -56,6 +58,7 @@ public class RoundRobinScheduler extends Scheduler {
 
       //process completed
       if (currentProcess.isDone()) {
+        System.out.println(String.format("Process %s completed", currentProcess));
         currentProcess = null;
       }
 
@@ -71,7 +74,7 @@ public class RoundRobinScheduler extends Scheduler {
       }
     }
 
-    if (currentProcess == null && readyQueue.isEmpty() == false) {
+    if (currentProcess == null && !readyQueue.isEmpty()) {
       currentProcess = readyQueue.poll();
       timeSliceLeft = TIME_QUANTUM;
     }

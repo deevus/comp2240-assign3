@@ -2,20 +2,21 @@ package system;
 
 import java.util.*;
 import java.lang.IllegalStateException;
-import java.util.logging.*;
 import java.io.File;
 import java.util.Scanner;
 
 public class Process {
   private Queue<Integer> instructions;
+  private static int _id = 0;
+  private int id;
 
-  public Process(Queue<Integer> instructions) { 
+  public Process(Queue<Integer> instructions, int id) { 
     this.instructions = instructions;
+    this.id = id;
   }
 
   /**
    * Executes the next instruction
-   * @param instruction [description]
    */
   public void executeInstruction() {
     this.instructions.poll();
@@ -27,6 +28,14 @@ public class Process {
 
   public int nextInstruction() {
     return this.instructions.peek();
+  }
+
+  public int getId() {
+    return id;
+  }
+  
+  public void setId(int id){
+    this.id = id;
   }
 
   public static Process fromFile(String filePath) {
@@ -49,14 +58,27 @@ public class Process {
         instructions.offer(Integer.parseInt(data.get(i)));
       }
 
-      return new Process(instructions);
+      return new Process(instructions, ++_id);
     }
     catch (Exception e) {
       //todo: do something
-      Logger.getLogger("scheduling.process").log(Level.WARNING, "Loading from file", e);
+      System.out.println(String.format("Error loading from file %s; %s", filePath, e.getMessage()));
     }
 
     //something went wrong
     return null;
+  }
+
+  @Override
+  public boolean equals(Object other) {
+    if (other instanceof ProcessFrame) {
+      return other.equals(this);
+    }
+    return this == other;
+  }
+
+  @Override
+  public String toString() {
+    return String.format("#%d", this.getId());
   }
 }
