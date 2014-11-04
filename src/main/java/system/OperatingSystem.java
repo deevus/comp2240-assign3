@@ -10,12 +10,14 @@ public class OperatingSystem {
   private List<ProcessFrame> frames = new ArrayList<ProcessFrame>();
   private final Scheduler scheduler;
   private final AllocationStrategy strategy;
+  private final PageReplacementAlgorithm algorithm;
 
-  public OperatingSystem(Scheduler scheduler, AllocationStrategy strategy) {
+  public OperatingSystem(Scheduler scheduler, AllocationStrategy strategy, PageReplacementAlgorithm algorithm) {
     this.scheduler = scheduler;
     this.scheduler.setOperatingSystem(this);
     this.strategy = strategy;
     this.strategy.setFrames(frames);
+    this.algorithm = algorithm;
   }
 
   public void run(List<system.Process> processes) {
@@ -44,9 +46,10 @@ public class OperatingSystem {
     ProcessFrame processFrame = frames.get(frames.indexOf(p));
 
     //check number of pages allocation for process
-    if (processFrame.hasMaxPages()) return;
-
     if (!processFrame.hasPageFor(i)) {
+      if (processFrame.hasMaxPages())
+        algorithm.removePage(processFrame);
+
       Page page = new Page(p, i);
       page.setTicksTillLoaded(PAGE_LOAD_TIME);
 
@@ -58,6 +61,24 @@ public class OperatingSystem {
     this.updatePages();
 
     this.scheduler.tick();
+  }
+
+  /**
+   * Event handler that is thrown when an instruction is executed
+   * on a process
+   * @param process The process that executed the instruction
+   * @param instruction The instruction that was executed
+   * @param currentTick The current clock tick number
+   */
+  public void onExecuteInstruction(Process process, int instruction, int currentTick) {
+    //get the process frame
+    ProcessFrame pf = frames.get(frames.indexOf(process));
+
+    //get the page from the given instruction
+    Page page = pf.getPageFor(instruction);
+
+    //update tick last used
+    page.setTickLastUsed(currentTick);
   }
 
   /**

@@ -43,9 +43,11 @@ public class RoundRobinScheduler extends Scheduler {
       boolean doBlock = false;
       timeSliceLeft--;
 
-      if (system.isPaged(currentProcess, currentProcess.nextInstruction())) {
+      int nextInstruction = currentProcess.nextInstruction();
+      if (system.isPaged(currentProcess, nextInstruction)) {
         System.out.println(String.format("Process %s executed instruction %d", currentProcess, currentProcess.nextInstruction()));
         currentProcess.executeInstruction();
+        this.onExecuteInstruction(currentProcess, nextInstruction);
       }
       else {
         System.out.println(String.format("Process %s instruction %d not loaded. Blocking.", currentProcess, currentProcess.nextInstruction()));

@@ -7,15 +7,35 @@ public class Page {
   private Process process;
   private int instruction;
   private int ticksTillLoaded;
+  private int tickLastUsed;
+  private boolean useBit;
 
   public Page(Process process, int instruction) {
     this.process = process;
     this.instruction = instruction;
     this.ticksTillLoaded = PAGE_NEW;
+    this.tickLastUsed = 0;
+    this.useBit = false;
   }
 
   public boolean isLoaded() {
     return ticksTillLoaded == PAGE_LOADED;
+  }
+  
+  public int getTickLastUsed() {
+    return tickLastUsed;
+  }
+  
+  public void setTickLastUsed(int tickLastUsed){
+    this.tickLastUsed = tickLastUsed;
+  }
+
+  public boolean getUseBit() {
+    return useBit;
+  }
+  
+  public void setUseBit(boolean useBit){
+    this.useBit = useBit;
   }
 
   public Process getProcess() {

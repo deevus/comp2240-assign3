@@ -37,6 +37,10 @@ public abstract class Scheduler {
   abstract void onStart();
   abstract void onStop();
 
+  protected void onExecuteInstruction(Process process, int instruction) {
+    system.onExecuteInstruction(process, instruction, this.getCurrentTick());
+  }
+
   public boolean isRunning() {
     return isRunning;
   }

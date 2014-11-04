@@ -23,7 +23,8 @@ public class Assignment3 {
 
       //start os
       AllocationStrategy strategy = new FixedAllocationStrategy();
-      OperatingSystem os = new OperatingSystem(scheduler, strategy);
+      PageReplacementAlgorithm algorithm = new LRUPageReplacement();
+      OperatingSystem os = new OperatingSystem(scheduler, strategy, algorithm);
       os.run(processes);
     }
   }
