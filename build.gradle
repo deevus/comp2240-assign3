@@ -34,3 +34,26 @@ run {
     "'build/resources/main/process5.txt', " +
     "]")
 }
+
+task runAll {
+  dependsOn 'runEx1', 'runEx2', 'runEx3'
+}
+
+task runEx1(type:Exec) {
+  dependsOn 'installApp'
+  workingDir './src/resources/Ex1'
+  commandLine 'cmd', '/c', '..\\..\\..\\build\\install\\comp2240-assign3\\bin\\comp2240-assign3.bat', 'process1.txt', 'process2.txt', 'process3.txt', 'process4.txt'
+}
+
+task runEx2(type:Exec) {
+  dependsOn 'installApp'
+  workingDir './src/resources/Ex2'
+  commandLine 'cmd', '/c', '..\\..\\..\\build\\install\\comp2240-assign3\\bin\\comp2240-assign3.bat', 'process1.txt', 'process2.txt', 'process3.txt', 'process4.txt'
+}
+
+task runEx3(type:Exec) {
+  dependsOn 'installApp'
+  workingDir './src/resources/Ex3'
+  commandLine 'cmd', '/c', '..\\..\\..\\build\\install\\comp2240-assign3\\bin\\comp2240-assign3.bat', 'process1.txt', 'process2.txt', 'process3.txt', 'process4.txt'
+}
+
