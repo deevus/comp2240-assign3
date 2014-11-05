@@ -21,7 +21,8 @@ public class FixedAllocationStrategy extends AllocationStrategy {
 
     //do we need to remove a page?
     if (processFrame.hasMaxPages()) {
-      this.getReplacementAlgorithm().removePage(processFrame.getPages());
+      Page page = this.getReplacementAlgorithm().getPageToRemove(processFrame.getPages());
+      processFrame.getPages().remove(page);
     }
   }
 

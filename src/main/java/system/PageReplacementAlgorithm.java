@@ -18,6 +18,6 @@ public abstract class PageReplacementAlgorithm {
    * based on the implemented algorithm
    * @param pages A list of pages to consider
    */
-  public abstract void removePage(List<Page> pages);
+  public abstract Page getPageToRemove(List<Page> pages);
 }
 

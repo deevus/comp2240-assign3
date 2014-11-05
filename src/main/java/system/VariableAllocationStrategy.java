@@ -18,6 +18,7 @@ public class VariableAllocationStrategy extends AllocationStrategy {
     }
 
     //do we need to remove a page?
+    Integer numPages = processFrame.getPages().size();
     if (processFrame.hasMaxPages()) {
       //get all pages
       List<Page> allPages = new ArrayList<>();
@@ -25,7 +26,20 @@ public class VariableAllocationStrategy extends AllocationStrategy {
         allPages.addAll(pf.getPages());
       }
 
-      this.getReplacementAlgorithm().removePage(allPages);
+      Page page = this.getReplacementAlgorithm().getPageToRemove(allPages);
+      ProcessFrame other = page.getProcess().getProcessFrame();
+
+      //is the page from another process?
+      if (page.getProcess().getProcessFrame() != processFrame) {
+        //decrement max pages of other process
+        other.setMaximumPages(other.getMaximumPages() - 1);
+
+        //increment max pages of this process
+        processFrame.setMaximumPages(processFrame.getMaximumPages() + 1);
+      }
+
+      //remove the page
+      other.getPages().remove(page);
     }
   }
 }

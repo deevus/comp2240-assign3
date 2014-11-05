@@ -93,7 +93,7 @@ public class OperatingSystem {
           p.setTicksTillLoaded(ticks);
 
           //check if now loaded
-          if (p.isLoaded()) {
+          if (ticks == 0) {
             //update process state
             p.getProcess().setState(Process.ProcessState.Ready);
           }

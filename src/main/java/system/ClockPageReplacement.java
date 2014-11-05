@@ -8,21 +8,18 @@ public class ClockPageReplacement extends PageReplacementAlgorithm {
   }
 
   @Override
-  public void removePage(List<Page> pages) {
+  public Page getPageToRemove(List<Page> pages) {
     Page toRemove = null;
     while (toRemove == null) {
       for (Page p : pages) {
         if (p.getUseBit() == false) {
           toRemove = p;
+          break;
         }
         p.setUseBit(!p.getUseBit());
       }
     }
 
-    //get process frame for page
-    ProcessFrame pf = toRemove.getProcess().getProcessFrame();
-
-    //remove it
-    pf.getPages().remove(toRemove);
+    return toRemove;
   }
 }
