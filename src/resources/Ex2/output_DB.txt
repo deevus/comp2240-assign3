@@ -1,27 +1,43 @@
-LRU - Fixed:
-PID | Turnaround Time | # Faults | Fault Times
-P01 |        75       |     5    | {0, 8, 19, 27, 35, 43, 51, 59, 67}
-P02 |        80       |     5    | {0, 9, 20, 28, 36, 48, 56, 64, 72}
-P03 |        21       |     1    | {0}
-P04 |        48       |     4    | {0, 14, 23, 31}
+Data Set 2:
 
-LRU - Variable:
-PID | Turnaround Time | # Faults | Fault Times
-P01 |        75       |     5    | {0, 8, 19, 27, 35, 43, 51, 59, 67}
-P02 |        80       |     5    | {0, 9, 20, 28, 36, 48, 56, 64, 72}
-P03 |        21       |     1    | {0}
-P04 |        48       |     4    | {0, 14, 23, 31}
+LRU - fixed:
+ProcessID      | Turnaround Time | # Faults | Fault Times
+process1.txt:  |       78        |     9    | {0, 8, 19, 27, 35, 46, 54, 62, 70}
+process2.txt:  |       79        |     9    | {0, 9, 20, 28, 36, 47, 55, 63, 71}
+process3.txt:  |       21        |     1    | {0}
+process4.txt:  |       45        |     4    | {0, 14, 22, 30}
 
-Clock - Fixed:
-PID | Turnaround Time | # Faults | Fault Times
-P01 |        75       |     5    | {0, 8, 19, 27, 35, 43, 51, 59, 67}
-P02 |        80       |     5    | {0, 9, 20, 28, 36, 48, 56, 64, 72}
-P03 |        21       |     1    | {0}
-P04 |        48       |     4    | {0, 14, 23, 31}
+LRU - variable :
+ProcessID      | Turnaround Time | # Faults | Fault Times
+process1.txt:  |       78        |     9    | {0, 8, 19, 27, 35, 46, 54, 62, 70}
+process2.txt:  |       79        |     9    | {0, 9, 20, 28, 36, 47, 55, 63, 71}
+process3.txt:  |       21        |     1    | {0}
+process4.txt:  |       45        |     4    | {0, 14, 22, 30}
 
-Clock - Variable:
-PID | Turnaround Time | # Faults | Fault Times
-P01 |        75       |     5    | {0, 8, 19, 27, 35, 43, 51, 59, 67}
-P02 |        80       |     5    | {0, 9, 20, 28, 36, 48, 56, 64, 72}
-P03 |        21       |     1    | {0}
-P04 |        48       |     4    | {0, 14, 23, 31}
+Clock - fixed:
+ProcessID      | Turnaround Time | # Faults | Fault Times
+process1.txt:  |       78        |     9    | {0, 8, 19, 27, 35, 46, 54, 62, 70}
+process2.txt:  |       79        |     9    | {0, 9, 20, 28, 36, 47, 55, 63, 71}
+process3.txt:  |       21        |     1    | {0}
+process4.txt:  |       45        |     4    | {0, 14, 22, 30}
+
+Clock - variable:
+ProcessID      | Turnaround Time | # Faults | Fault Times
+process1.txt:  |       78        |     9    | {0, 8, 19, 27, 35, 46, 54, 62, 70}
+process2.txt:  |       79        |     9    | {0, 9, 20, 28, 36, 47, 55, 63, 71}
+process3.txt:  |       21        |     1    | {0}
+process4.txt:  |       45        |     4    | {0, 14, 22, 30}
+
+Optimal - fixed:
+ProcessID      | Turnaround Time | # Faults | Fault Times
+process1.txt:  |       78        |     9    | {0, 8, 19, 27, 35, 46, 54, 62, 70}
+process2.txt:  |       79        |     9    | {0, 9, 20, 28, 36, 47, 55, 63, 71}
+process3.txt:  |       21        |     1    | {0}
+process4.txt:  |       45        |     4    | {0, 14, 22, 30}
+
+Optimal - variable:
+ProcessID      | Turnaround Time | # Faults | Fault Times
+process1.txt:  |       78        |     9    | {0, 8, 19, 27, 35, 46, 54, 62, 70}
+process2.txt:  |       79        |     9    | {0, 9, 20, 28, 36, 47, 55, 63, 71}
+process3.txt:  |       21        |     1    | {0}
+process4.txt:  |       45        |     4    | {0, 14, 22, 30}

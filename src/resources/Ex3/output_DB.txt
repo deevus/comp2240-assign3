@@ -1,276 +1,43 @@
->java Driver process1.txt process2.txt process3.txt process4.txt
+Data Set 3:
 
-FIXED ALLOCATION LOCAL REPLACEMENT LRU
-process1.txt
-5 Page Faults
-Occured:
-PageId  1 faulted at time(s): 0
-PageId  2 faulted at time(s): 16
-PageId  3 faulted at time(s): 8
-PageId  4 faulted at time(s): 37
-PageId  5 faulted at time(s): 25
-Turnaround Time: 50
+LRU - fixed:
+ProcessID      | Turnaround Time | # Faults | Fault Times
+process1.txt:  |       44        |     5    | {0, 8, 16, 25, 35}
+process2.txt:  |       96        |     10   | {0, 9, 17, 26, 36, 50, 59, 67, 78, 87}
+process3.txt:  |       34        |     3    | {0, 10, 18}
+process4.txt:  |       98        |     10   | {0, 11, 19, 31, 39, 50, 58, 66, 80, 88}
 
-process2.txt
-10 Page Faults
-Occured:
-PageId  1 faulted at time(s): 17
-PageId  2 faulted at time(s): 69
-PageId  3 faulted at time(s): 53
-PageId  4 faulted at time(s): 61
-PageId  5 faulted at time(s): 0
-PageId  6 faulted at time(s): 9 77
-PageId  8 faulted at time(s): 37
-PageId  9 faulted at time(s): 26 86
-Turnaround Time: 96
+LRU variable:
+ProcessID      | Turnaround Time | # Faults | Fault Times
+process1.txt:  |       44        |     5    | {0, 8, 16, 25, 35}
+process2.txt:  |       86        |     8    | {0, 9, 17, 26, 36, 50, 59, 67}
+process3.txt:  |       34        |     3    | {0, 10, 18}
+process4.txt:  |       87        |     8    | {0, 11, 19, 31, 39, 50, 58, 66}
 
-process3.txt
-3 Page Faults
-Occured:
-PageId  7 faulted at time(s): 0
-PageId  8 faulted at time(s): 10
-PageId  9 faulted at time(s): 18
-Turnaround Time: 34
+Clock fixed:
+ProcessID      | Turnaround Time | # Faults | Fault Times
+process1.txt:  |       44        |     5    | {0, 8, 16, 25, 35}
+process2.txt:  |       96        |     10   | {0, 9, 17, 26, 36, 50, 59, 67, 78, 87}
+process3.txt:  |       34        |     3    | {0, 10, 18}
+process4.txt:  |       98        |     10   | {0, 11, 19, 31, 39, 50, 58, 66, 80, 88}
 
-process4.txt
-9 Page Faults
-Occured:
-PageId  1 faulted at time(s): 62
-PageId  2 faulted at time(s): 70
-PageId  3 faulted at time(s): 19
-PageId  4 faulted at time(s): 31
-PageId  5 faulted at time(s): 0 83
-PageId  6 faulted at time(s): 11
-PageId  8 faulted at time(s): 53
-PageId  9 faulted at time(s): 39
-Turnaround Time: 93
+Clock variable:
+ProcessID      | Turnaround Time | # Faults | Fault Times
+process1.txt:  |       44        |     5    | {0, 8, 16, 25, 35}
+process2.txt:  |       86        |     8    | {0, 9, 17, 26, 36, 50, 59, 67}
+process3.txt:  |       34        |     3    | {0, 10, 18}
+process4.txt:  |       87        |     8    | {0, 11, 19, 31, 39, 50, 58, 66}
 
+Optimal fixed:
+ProcessID      | Turnaround Time | # Faults | Fault Times
+process1.txt:  |       44        |     5    | {0, 8, 16, 25, 35}
+process2.txt:  |       86        |     8    | {0, 9, 17, 26, 36, 50, 59, 67}
+process3.txt:  |       34        |     3    | {0, 10, 18}
+process4.txt:  |       87        |     8    | {0, 11, 19, 31, 39, 50, 58, 66}
 
-FIXED ALLOCATION LOCAL REPLACEMENT CLOCK
-process1.txt
-5 Page Faults
-Occured:
-PageId  1 faulted at time(s): 0
-PageId  2 faulted at time(s): 16
-PageId  3 faulted at time(s): 8
-PageId  4 faulted at time(s): 37
-PageId  5 faulted at time(s): 25
-Turnaround Time: 50
-
-process2.txt
-10 Page Faults
-Occured:
-PageId  1 faulted at time(s): 17
-PageId  2 faulted at time(s): 69
-PageId  3 faulted at time(s): 53
-PageId  4 faulted at time(s): 61
-PageId  5 faulted at time(s): 0
-PageId  6 faulted at time(s): 9 77
-PageId  8 faulted at time(s): 37
-PageId  9 faulted at time(s): 26 86
-Turnaround Time: 96
-
-process3.txt
-3 Page Faults
-Occured:
-PageId  7 faulted at time(s): 0
-PageId  8 faulted at time(s): 10
-PageId  9 faulted at time(s): 18
-Turnaround Time: 34
-
-process4.txt
-9 Page Faults
-Occured:
-PageId  1 faulted at time(s): 62
-PageId  2 faulted at time(s): 70
-PageId  3 faulted at time(s): 19
-PageId  4 faulted at time(s): 31
-PageId  5 faulted at time(s): 0 83
-PageId  6 faulted at time(s): 11
-PageId  8 faulted at time(s): 53
-PageId  9 faulted at time(s): 39
-Turnaround Time: 93
-
-
-FIXED ALLOCATION LOCAL REPLACEMENT OPTIMAL
-process1.txt
-5 Page Faults
-Occured:
-PageId  1 faulted at time(s): 0
-PageId  2 faulted at time(s): 16
-PageId  3 faulted at time(s): 8
-PageId  4 faulted at time(s): 37
-PageId  5 faulted at time(s): 25
-Turnaround Time: 50
-
-process2.txt
-8 Page Faults
-Occured:
-PageId  1 faulted at time(s): 17
-PageId  2 faulted at time(s): 69
-PageId  3 faulted at time(s): 53
-PageId  4 faulted at time(s): 61
-PageId  5 faulted at time(s): 0
-PageId  6 faulted at time(s): 9
-PageId  8 faulted at time(s): 37
-PageId  9 faulted at time(s): 26
-Turnaround Time: 85
-
-process3.txt
-3 Page Faults
-Occured:
-PageId  7 faulted at time(s): 0
-PageId  8 faulted at time(s): 10
-PageId  9 faulted at time(s): 18
-Turnaround Time: 34
-
-process4.txt
-8 Page Faults
-Occured:
-PageId  1 faulted at time(s): 62
-PageId  2 faulted at time(s): 70
-PageId  3 faulted at time(s): 19
-PageId  4 faulted at time(s): 31
-PageId  5 faulted at time(s): 0
-PageId  6 faulted at time(s): 11
-PageId  8 faulted at time(s): 53
-PageId  9 faulted at time(s): 39
-Turnaround Time: 91
-
-
-VARIABLE ALLOCATION GLOBAL REPLACEMENT LRU
-process1.txt
-5 Page Faults
-Occured:
-PageId  1 faulted at time(s): 0
-PageId  2 faulted at time(s): 16
-PageId  3 faulted at time(s): 8
-PageId  4 faulted at time(s): 37
-PageId  5 faulted at time(s): 25
-Turnaround Time: 50
-
-process2.txt
-8 Page Faults
-Occured:
-PageId  1 faulted at time(s): 17
-PageId  2 faulted at time(s): 69
-PageId  3 faulted at time(s): 53
-PageId  4 faulted at time(s): 61
-PageId  5 faulted at time(s): 0
-PageId  6 faulted at time(s): 9
-PageId  8 faulted at time(s): 37
-PageId  9 faulted at time(s): 26
-Turnaround Time: 85
-
-process3.txt
-3 Page Faults
-Occured:
-PageId  7 faulted at time(s): 0
-PageId  8 faulted at time(s): 10
-PageId  9 faulted at time(s): 18
-Turnaround Time: 34
-
-process4.txt
-8 Page Faults
-Occured:
-PageId  1 faulted at time(s): 62
-PageId  2 faulted at time(s): 70
-PageId  3 faulted at time(s): 19
-PageId  4 faulted at time(s): 31
-PageId  5 faulted at time(s): 0
-PageId  6 faulted at time(s): 11
-PageId  8 faulted at time(s): 53
-PageId  9 faulted at time(s): 39
-Turnaround Time: 91
-
-
-VARIABLE ALLOCATION GLOBAL REPLACEMENT CLOCK
-process1.txt
-5 Page Faults
-Occured:
-PageId  1 faulted at time(s): 0
-PageId  2 faulted at time(s): 16
-PageId  3 faulted at time(s): 8
-PageId  4 faulted at time(s): 37
-PageId  5 faulted at time(s): 25
-Turnaround Time: 50
-
-process2.txt
-8 Page Faults
-Occured:
-PageId  1 faulted at time(s): 17
-PageId  2 faulted at time(s): 69
-PageId  3 faulted at time(s): 53
-PageId  4 faulted at time(s): 61
-PageId  5 faulted at time(s): 0
-PageId  6 faulted at time(s): 9
-PageId  8 faulted at time(s): 37
-PageId  9 faulted at time(s): 26
-Turnaround Time: 85
-
-process3.txt
-3 Page Faults
-Occured:
-PageId  7 faulted at time(s): 0
-PageId  8 faulted at time(s): 10
-PageId  9 faulted at time(s): 18
-Turnaround Time: 34
-
-process4.txt
-8 Page Faults
-Occured:
-PageId  1 faulted at time(s): 62
-PageId  2 faulted at time(s): 70
-PageId  3 faulted at time(s): 19
-PageId  4 faulted at time(s): 31
-PageId  5 faulted at time(s): 0
-PageId  6 faulted at time(s): 11
-PageId  8 faulted at time(s): 53
-PageId  9 faulted at time(s): 39
-Turnaround Time: 91
-
-
-VARIABLE ALLOCATION GLOBAL REPLACEMENT OPTIMAL
-process1.txt
-5 Page Faults
-Occured:
-PageId  1 faulted at time(s): 0
-PageId  2 faulted at time(s): 16
-PageId  3 faulted at time(s): 8
-PageId  4 faulted at time(s): 37
-PageId  5 faulted at time(s): 25
-Turnaround Time: 50
-
-process2.txt
-8 Page Faults
-Occured:
-PageId  1 faulted at time(s): 17
-PageId  2 faulted at time(s): 69
-PageId  3 faulted at time(s): 53
-PageId  4 faulted at time(s): 61
-PageId  5 faulted at time(s): 0
-PageId  6 faulted at time(s): 9
-PageId  8 faulted at time(s): 37
-PageId  9 faulted at time(s): 26
-Turnaround Time: 85
-
-process3.txt
-3 Page Faults
-Occured:
-PageId  7 faulted at time(s): 0
-PageId  8 faulted at time(s): 10
-PageId  9 faulted at time(s): 18
-Turnaround Time: 34
-
-process4.txt
-8 Page Faults
-Occured:
-PageId  1 faulted at time(s): 62
-PageId  2 faulted at time(s): 70
-PageId  3 faulted at time(s): 19
-PageId  4 faulted at time(s): 31
-PageId  5 faulted at time(s): 0
-PageId  6 faulted at time(s): 11
-PageId  8 faulted at time(s): 53
-PageId  9 faulted at time(s): 39
-Turnaround Time: 91
+Optimal variable:
+ProcessID      | Turnaround Time | # Faults | Fault Times
+process1.txt:  |       44        |     5    | {0, 8, 16, 25, 35}
+process2.txt:  |       86        |     8    | {0, 9, 17, 26, 36, 50, 59, 67}
+process3.txt:  |       34        |     3    | {0, 10, 18}
+process4.txt:  |       87        |     8    | {0, 11, 19, 31, 39, 50, 58, 66}

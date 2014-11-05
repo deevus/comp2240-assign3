@@ -58,3 +58,8 @@ task runEx3(type:Exec) {
   commandLine 'cmd', '/c', '..\\..\\..\\build\\install\\comp2240-assign3\\bin\\comp2240-assign3.bat', 'process1.txt', 'process2.txt', 'process3.txt', 'process4.txt'
 }
 
+task zip(type: Zip) {
+    from configurations.runtime
+    from 'src/main/java'
+    into (project.name)
+}
