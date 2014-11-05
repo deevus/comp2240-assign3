@@ -28,6 +28,9 @@ public class RoundRobinScheduler extends Scheduler {
   @Override
   void onStart() {
     // System.out.println("Scheduler Started.");
+    if (!readyQueue.isEmpty()) {
+      this.currentProcess = readyQueue.poll();
+    }
   }
 
   @Override

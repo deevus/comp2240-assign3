@@ -28,10 +28,7 @@ public class Assignment3 {
       Scheduler scheduler = new RoundRobinScheduler();
       AllocationStrategy strategy = new FixedAllocationStrategy(OperatingSystem.MAX_FRAMES, AllocationStrategy.PageReplacement.LRU);
       System.out.println();
-      System.out.println("====================================");
-      System.out.println("Fixed Allocation / Local Replacement");
-      System.out.println("--------LRU Page Replacement--------");
-      System.out.println("====================================");
+      System.out.println("LRU - Fixed:");
       OperatingSystem os = new OperatingSystem(scheduler, strategy);
       //start os
       os.run(processesClone);
@@ -41,12 +38,9 @@ public class Assignment3 {
       for (Process p: processes) processesClone.add((Process)p.clone());
 
       scheduler = new RoundRobinScheduler();
-      strategy = new FixedAllocationStrategy(OperatingSystem.MAX_FRAMES, AllocationStrategy.PageReplacement.Clock);
+      strategy = new VariableAllocationStrategy(OperatingSystem.MAX_FRAMES, AllocationStrategy.PageReplacement.LRU);
       System.out.println();
-      System.out.println("====================================");
-      System.out.println("Fixed Allocation / Local Replacement");
-      System.out.println("-------Clock Page Replacement-------");
-      System.out.println("====================================");
+      System.out.println("LRU - Variable:");
       os = new OperatingSystem(scheduler, strategy);
       os.run(processesClone);
       System.out.print(os.report());
@@ -55,12 +49,9 @@ public class Assignment3 {
       for (Process p: processes) processesClone.add((Process)p.clone());
 
       scheduler = new RoundRobinScheduler();
-      strategy = new VariableAllocationStrategy(OperatingSystem.MAX_FRAMES, AllocationStrategy.PageReplacement.LRU);
+      strategy = new FixedAllocationStrategy(OperatingSystem.MAX_FRAMES, AllocationStrategy.PageReplacement.Clock);
       System.out.println();
-      System.out.println("====================================");
-      System.out.println("--Variable Allocation / Global Rep--");
-      System.out.println("--------LRU Page Replacement--------");
-      System.out.println("====================================");
+      System.out.println("Clock - Fixed:");
       os = new OperatingSystem(scheduler, strategy);
       os.run(processesClone);
       System.out.print(os.report());
@@ -71,13 +62,11 @@ public class Assignment3 {
       scheduler = new RoundRobinScheduler();
       strategy = new VariableAllocationStrategy(OperatingSystem.MAX_FRAMES, AllocationStrategy.PageReplacement.Clock);
       System.out.println();
-      System.out.println("====================================");
-      System.out.println("--Variable Allocation / Global Rep--");
-      System.out.println("-------Clock Page Replacement-------");
-      System.out.println("====================================");
+      System.out.println("Clock - Variable:");
       os = new OperatingSystem(scheduler, strategy);
       os.run(processesClone);
       System.out.print(os.report());
+      System.out.println();
     }
   }
 }

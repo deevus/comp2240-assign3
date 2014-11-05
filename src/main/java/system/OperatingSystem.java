@@ -2,6 +2,7 @@ package system;
 
 import scheduling.*;
 import java.util.*;
+import org.apache.commons.lang.StringUtils;
 
 public class OperatingSystem {
 
@@ -103,20 +104,17 @@ public class OperatingSystem {
   }
 
   public String report() {
-    String result = "";
+    String result = "PID | Turnaround Time | # Faults | Fault Times\r\n";
     for (ProcessFrame pf: this.frames) {
       Process p = pf.getProcess();
-      String heading = String.format("Process %s: %d page faults, completed in %d ticks\r\n", p, p.getPageFaults().size(), p.getFinishTime());
-      result += heading;
-      for (int i = 1; i < heading.length() - 1; i++) {
-        result += "=";
+      //result += String.format("P%02d | %s | %d |", p.getId(), p.getFinishTime(), p.getPageFaults().size());
+      result += String.format("P%02d |", p.getId());
+      result += StringUtils.center(Integer.toString(p.getFinishTime()), 17, " ") + "|";
+      result += StringUtils.center(Integer.toString(p.getPageFaults().size()), 10, " ") + "| ";
+      result += "{";
+      for (int i = 0; i < p.getPageFaults().size(); i++) {
+        result += String.format("%d%s", p.getPageFaults().get(i).getTick(), (i < p.getPageFaults().size() - 1 ? ", " : "}\r\n"));
       }
-      result += "\r\n";
-      for (PageFault pageFault: p.getPageFaults()) {
-        result += String.format("\tPage Fault @ Tick #%d\r\n", pageFault.getTick());
-      }
-
-      result += "\r\n";
     }
     return result;
   }
