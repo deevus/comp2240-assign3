@@ -61,5 +61,6 @@ task runEx3(type:Exec) {
 task zip(type: Zip) {
     from configurations.runtime
     from 'src/main/java'
-    into (project.name)
+    from 'Makefile'
+    archiveName ('c3185790-assignment3.zip')
 }
