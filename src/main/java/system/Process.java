@@ -5,7 +5,7 @@ import java.lang.IllegalStateException;
 import java.io.File;
 import java.util.Scanner;
 
-public class Process {
+public class Process implements Cloneable {
   public enum ProcessState {
     Ready,
     Blocked,
@@ -18,6 +18,7 @@ public class Process {
   private static int _id = 0;
   private int id;
   private Integer finishTime = null;
+  private ProcessFrame processFrame;
 
   public Process(Queue<Integer> instructions, int id) { 
     this.instructions = instructions;
@@ -39,6 +40,14 @@ public class Process {
 
   public int nextInstruction() {
     return this.instructions.peek();
+  }
+
+  public ProcessFrame getProcessFrame() {
+    return this.processFrame;
+  }
+
+  public void setProcessFrame(ProcessFrame processFrame) {
+    this.processFrame = processFrame;
   }
 
   public int getId() {
@@ -126,5 +135,12 @@ public class Process {
   @Override
   public String toString() {
     return String.format("#%d", this.getId());
+  }
+
+  @Override
+  public Object clone() {
+    Queue<Integer> ins = new LinkedList<>();
+    for (Integer i: this.instructions) ins.add(i);
+    return new Process(ins, this.id);
   }
 }

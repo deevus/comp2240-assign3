@@ -6,7 +6,7 @@ import scheduling.*;
 import java.util.*;
 
 public class OperatingSystemTests {
-  private OperatingSystem os = new OperatingSystem(new RoundRobinScheduler(), new FixedAllocationStrategy(), new LRUPageReplacement());
+  private OperatingSystem os = new OperatingSystem(new RoundRobinScheduler(), new FixedAllocationStrategy(OperatingSystem.MAX_FRAMES, AllocationStrategy.PageReplacement.LRU));
 
   @Test 
   public void testRun() {

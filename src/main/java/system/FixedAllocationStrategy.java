@@ -1,20 +1,27 @@
 package system;
 
+/**
+ * Allocates a fixed number of pages to each process
+ * that does not change over the course of execution
+ * using a local replacement strategy
+ */
 public class FixedAllocationStrategy extends AllocationStrategy {
-  public FixedAllocationStrategy() {
-
+  public FixedAllocationStrategy(int maxFrames, PageReplacement pageReplacement) {
+    super(maxFrames, pageReplacement);
   }
 
   @Override
-  public void allocateFrames(int availableFrames) {
-    int framesPerProcess = availableFrames / this.getFrames().size();
-    while (availableFrames > 0) {
-      for (ProcessFrame pf: this.getFrames()) {
-        pf.setMaximumPages(pf.getMaximumPages() + framesPerProcess);
-        availableFrames -= framesPerProcess;
-        if (availableFrames == 0) break;
-      }
-      framesPerProcess = 1;
+  public void allocatePages(ProcessFrame processFrame) {
+    //average number of pages by number of processes
+    //only do this once
+    if (processFrame.getMaximumPages() == 0) {
+      int pagesPerProcess = this.getMaxFrames() / this.getFrames().size();
+      processFrame.setMaximumPages(pagesPerProcess);
+    }
+
+    //do we need to remove a page?
+    if (processFrame.hasMaxPages()) {
+      this.getReplacementAlgorithm().removePage(processFrame.getPages());
     }
   }
 

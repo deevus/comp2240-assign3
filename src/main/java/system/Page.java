@@ -15,7 +15,7 @@ public class Page {
     this.instruction = instruction;
     this.ticksTillLoaded = PAGE_NEW;
     this.tickLastUsed = 0;
-    this.useBit = false;
+    this.useBit = true;
   }
 
   public boolean isLoaded() {

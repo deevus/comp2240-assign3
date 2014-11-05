@@ -4,25 +4,24 @@ import scheduling.*;
 import java.util.*;
 
 public class OperatingSystem {
+
   public static final int MAX_FRAMES = 20;
   public static final int PAGE_LOAD_TIME = 7;
 
   private List<ProcessFrame> frames = new ArrayList<ProcessFrame>();
   private final Scheduler scheduler;
-  private final AllocationStrategy strategy;
-  private final PageReplacementAlgorithm algorithm;
+  private final AllocationStrategy allocationStrategy;
 
-  public OperatingSystem(Scheduler scheduler, AllocationStrategy strategy, PageReplacementAlgorithm algorithm) {
+  public OperatingSystem(Scheduler scheduler, AllocationStrategy strategy) {
     this.scheduler = scheduler;
     this.scheduler.setOperatingSystem(this);
-    this.strategy = strategy;
-    this.strategy.setFrames(frames);
-    this.algorithm = algorithm;
+    this.allocationStrategy = strategy;
+    this.allocationStrategy.setFrames(frames);
   }
 
   public void run(List<system.Process> processes) {
     this.initFrames(processes);
-    this.strategy.allocateFrames(MAX_FRAMES);
+    //this.allocationStrategy.allocatePages(MAX_FRAMES);
     this.scheduler.start(processes);
     while (this.scheduler.isRunning()) {
       this.tick();
@@ -31,7 +30,9 @@ public class OperatingSystem {
 
   public void initFrames(List<Process> processes) {
     for (Process p: processes) {
-      frames.add(new ProcessFrame(p));
+      ProcessFrame pf = new ProcessFrame(p);
+      p.setProcessFrame(pf);
+      frames.add(pf);
     }
 //    System.out.println(String.format("Init %d process frames.", frames.size()));
   }
@@ -47,8 +48,7 @@ public class OperatingSystem {
 
     //check number of pages allocation for process
     if (!processFrame.hasPageFor(i)) {
-      if (processFrame.hasMaxPages())
-        algorithm.removePage(processFrame);
+      allocationStrategy.allocatePages(processFrame);
 
       Page page = new Page(p, i);
       page.setTicksTillLoaded(PAGE_LOAD_TIME);
@@ -113,10 +113,11 @@ public class OperatingSystem {
       }
       result += "\r\n";
       for (PageFault pageFault: p.getPageFaults()) {
-        result += String.format("\t\tPage Fault @ Tick #%d\r\n", pageFault.getTick());
+        result += String.format("\tPage Fault @ Tick #%d\r\n", pageFault.getTick());
       }
-    }
 
+      result += "\r\n";
+    }
     return result;
   }
 

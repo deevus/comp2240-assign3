@@ -8,14 +8,13 @@ import system.*;
 import system.Process;
 
 public class RoundRobinScheduler extends Scheduler {
-  private static final Logger logger = Logger.getLogger("scheduling.scheduler");
   public static final int TIME_QUANTUM = 4;
 
   private Queue<system.Process> readyQueue;
   private int timeSliceLeft;
 
   public RoundRobinScheduler() {
-    readyQueue = new LinkedList<system.Process>();
+    readyQueue = new LinkedList<>();
     timeSliceLeft = TIME_QUANTUM;
   }
 
@@ -38,27 +37,35 @@ public class RoundRobinScheduler extends Scheduler {
 
   @Override
   void onTick() { if (currentProcess != null) {
-      boolean doBlock = false;
       timeSliceLeft--;
 
-      int nextInstruction = currentProcess.nextInstruction();
-      if (system.isPaged(currentProcess, nextInstruction)) {
-//        System.out.println(String.format("T%d Process %s executed instruction %d", this.getCurrentTick(), currentProcess, currentProcess.nextInstruction()));
-        currentProcess.executeInstruction();
-        this.onExecuteInstruction(currentProcess, nextInstruction);
-      }
-      else {
-//        System.out.println(String.format("T%d Process %s instruction %d not loaded. Blocking.", this.getCurrentTick(), currentProcess, currentProcess.nextInstruction()));
-        //block the process
-        doBlock = true;
+      //while there are processes in the ready state
+      while (currentProcess.getState() == Process.ProcessState.Ready) {
+        //get next instruction
+        int nextInstruction = currentProcess.nextInstruction();
 
-        //register pagefault if not already blocked
-        if (currentProcess.getState() == Process.ProcessState.Ready) {
+        //check if it is paged
+        if (system.isPaged(currentProcess, nextInstruction)) {
+          //execute it
+          currentProcess.executeInstruction();
+
+          //call event handler
+          this.onExecuteInstruction(currentProcess, nextInstruction);
+          break;
+        }
+        else {
+          //register page fault
           currentProcess.addPageFault(this.getCurrentTick());
 
           //load instruction
           system.loadInstruction(currentProcess, currentProcess.nextInstruction());
           currentProcess.setState(Process.ProcessState.Blocked);
+
+          //push to queue
+          readyQueue.offer(currentProcess);
+
+          //get next process
+          currentProcess = readyQueue.poll();
         }
       }
 
