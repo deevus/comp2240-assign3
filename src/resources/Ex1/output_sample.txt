@@ -1,0 +1,198 @@
+>java Assignment3 process1.txt process2.txt process3.txt process4.txt
+
+***FIXED ALLOCATION LOCAL REPLACEMENT LRU***
+process1.txt
+5 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 8
+PageId  3 faulted at time(s): 20
+PageId  4 faulted at time(s): 29
+PageId  5 faulted at time(s): 37
+Turnaround Time: 45
+
+process2.txt
+5 Page Faults
+PageId  1 faulted at time(s): 36
+PageId  2 faulted at time(s): 28
+PageId  3 faulted at time(s): 20
+PageId  4 faulted at time(s): 9
+PageId  5 faulted at time(s): 0
+Turnaround Time: 46
+
+process3.txt
+1 Page Faults
+PageId  1 faulted at time(s): 0
+Turnaround Time: 17
+
+process4.txt
+4 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 14
+PageId  3 faulted at time(s): 22
+PageId  4 faulted at time(s): 32
+Turnaround Time: 42
+
+
+***FIXED ALLOCATION LOCAL REPLACEMENT CLOCK***
+process1.txt
+5 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 8
+PageId  3 faulted at time(s): 20
+PageId  4 faulted at time(s): 29
+PageId  5 faulted at time(s): 37
+Turnaround Time: 45
+
+process2.txt
+5 Page Faults
+PageId  1 faulted at time(s): 36
+PageId  2 faulted at time(s): 28
+PageId  3 faulted at time(s): 20
+PageId  4 faulted at time(s): 9
+PageId  5 faulted at time(s): 0
+Turnaround Time: 46
+
+process3.txt
+1 Page Faults
+PageId  1 faulted at time(s): 0
+Turnaround Time: 17
+
+process4.txt
+4 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 14
+PageId  3 faulted at time(s): 22
+PageId  4 faulted at time(s): 32
+Turnaround Time: 42
+
+
+***FIXED ALLOCATION LOCAL REPLACEMENT OPTIMAL***
+process1.txt
+5 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 8
+PageId  3 faulted at time(s): 20
+PageId  4 faulted at time(s): 29
+PageId  5 faulted at time(s): 37
+Turnaround Time: 45
+
+process2.txt
+5 Page Faults
+PageId  1 faulted at time(s): 36
+PageId  2 faulted at time(s): 28
+PageId  3 faulted at time(s): 20
+PageId  4 faulted at time(s): 9
+PageId  5 faulted at time(s): 0
+Turnaround Time: 46
+
+process3.txt
+1 Page Faults
+PageId  1 faulted at time(s): 0
+Turnaround Time: 17
+
+process4.txt
+4 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 14
+PageId  3 faulted at time(s): 22
+PageId  4 faulted at time(s): 32
+Turnaround Time: 42
+
+
+***VARIABLE ALLOCATION GLOBAL REPLACEMENT LRU***
+process1.txt
+5 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 8
+PageId  3 faulted at time(s): 20
+PageId  4 faulted at time(s): 29
+PageId  5 faulted at time(s): 37
+Turnaround Time: 45
+
+process2.txt
+5 Page Faults
+PageId  1 faulted at time(s): 36
+PageId  2 faulted at time(s): 28
+PageId  3 faulted at time(s): 20
+PageId  4 faulted at time(s): 9
+PageId  5 faulted at time(s): 0
+Turnaround Time: 46
+
+process3.txt
+1 Page Faults
+PageId  1 faulted at time(s): 0
+Turnaround Time: 17
+
+process4.txt
+4 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 14
+PageId  3 faulted at time(s): 22
+PageId  4 faulted at time(s): 32
+Turnaround Time: 42
+
+
+***VARIABLE ALLOCATION GLOBAL REPLACEMENT CLOCK***
+process1.txt
+5 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 8
+PageId  3 faulted at time(s): 20
+PageId  4 faulted at time(s): 29
+PageId  5 faulted at time(s): 37
+Turnaround Time: 45
+
+process2.txt
+5 Page Faults
+PageId  1 faulted at time(s): 36
+PageId  2 faulted at time(s): 28
+PageId  3 faulted at time(s): 20
+PageId  4 faulted at time(s): 9
+PageId  5 faulted at time(s): 0
+Turnaround Time: 46
+
+process3.txt
+1 Page Faults
+PageId  1 faulted at time(s): 0
+Turnaround Time: 17
+
+process4.txt
+4 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 14
+PageId  3 faulted at time(s): 22
+PageId  4 faulted at time(s): 32
+Turnaround Time: 42
+
+
+***VARIABLE ALLOCATION GLOBAL REPLACEMENT OPTIMAL***
+process1.txt
+5 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 8
+PageId  3 faulted at time(s): 20
+PageId  4 faulted at time(s): 29
+PageId  5 faulted at time(s): 37
+Turnaround Time: 45
+
+process2.txt
+5 Page Faults
+PageId  1 faulted at time(s): 36
+PageId  2 faulted at time(s): 28
+PageId  3 faulted at time(s): 20
+PageId  4 faulted at time(s): 9
+PageId  5 faulted at time(s): 0
+Turnaround Time: 46
+
+process3.txt
+1 Page Faults
+PageId  1 faulted at time(s): 0
+Turnaround Time: 17
+
+process4.txt
+4 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 14
+PageId  3 faulted at time(s): 22
+PageId  4 faulted at time(s): 32
+Turnaround Time: 42

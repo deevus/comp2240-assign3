@@ -1,0 +1,27 @@
+LRU - Fixed:
+PID | Turnaround Time | # Faults | Fault Times
+P01 |        45       |     5    | {0, 8, 20, 29, 37}
+P02 |        46       |     5    | {0, 9, 20, 28, 36}
+P03 |        17       |     1    | {0}
+P04 |        42       |     4    | {0, 14, 22, 32}
+
+LRU - Variable:
+PID | Turnaround Time | # Faults | Fault Times
+P01 |        45       |     5    | {0, 8, 20, 29, 37}
+P02 |        46       |     5    | {0, 9, 20, 28, 36}
+P03 |        17       |     1    | {0}
+P04 |        42       |     4    | {0, 14, 22, 32}
+
+Clock - Fixed:
+PID | Turnaround Time | # Faults | Fault Times
+P01 |        45       |     5    | {0, 8, 20, 29, 37}
+P02 |        46       |     5    | {0, 9, 20, 28, 36}
+P03 |        17       |     1    | {0}
+P04 |        42       |     4    | {0, 14, 22, 32}
+
+Clock - Variable:
+PID | Turnaround Time | # Faults | Fault Times
+P01 |        45       |     5    | {0, 8, 20, 29, 37}
+P02 |        46       |     5    | {0, 9, 20, 28, 36}
+P03 |        17       |     1    | {0}
+P04 |        42       |     4    | {0, 14, 22, 32}

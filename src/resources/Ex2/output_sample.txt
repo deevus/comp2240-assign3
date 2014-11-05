@@ -1,0 +1,246 @@
+>java Assignment3 process1.txt process2.txt process3.txt process4.txt
+
+***FIXED ALLOCATION LOCAL REPLACEMENT LRU***
+process1.txt
+9 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 8
+PageId  3 faulted at time(s): 19
+PageId  4 faulted at time(s): 27
+PageId  5 faulted at time(s): 35
+PageId  6 faulted at time(s): 43
+PageId  7 faulted at time(s): 51
+PageId  8 faulted at time(s): 59
+PageId  9 faulted at time(s): 67
+Turnaround Time: 75
+
+process2.txt
+9 Page Faults
+PageId  1 faulted at time(s): 72
+PageId  2 faulted at time(s): 64
+PageId  3 faulted at time(s): 56
+PageId  4 faulted at time(s): 48
+PageId  5 faulted at time(s): 36
+PageId  6 faulted at time(s): 28
+PageId  7 faulted at time(s): 20
+PageId  8 faulted at time(s): 9
+PageId  9 faulted at time(s): 0
+Turnaround Time: 80
+
+process3.txt
+1 Page Faults
+PageId  1 faulted at time(s): 0
+Turnaround Time: 21
+
+process4.txt
+4 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 14
+PageId  3 faulted at time(s): 23
+PageId  4 faulted at time(s): 31
+Turnaround Time: 48
+
+
+***FIXED ALLOCATION LOCAL REPLACEMENT CLOCK***
+process1.txt
+9 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 8
+PageId  3 faulted at time(s): 19
+PageId  4 faulted at time(s): 27
+PageId  5 faulted at time(s): 35
+PageId  6 faulted at time(s): 43
+PageId  7 faulted at time(s): 51
+PageId  8 faulted at time(s): 59
+PageId  9 faulted at time(s): 67
+Turnaround Time: 75
+
+process2.txt
+9 Page Faults
+PageId  1 faulted at time(s): 72
+PageId  2 faulted at time(s): 64
+PageId  3 faulted at time(s): 56
+PageId  4 faulted at time(s): 48
+PageId  5 faulted at time(s): 36
+PageId  6 faulted at time(s): 28
+PageId  7 faulted at time(s): 20
+PageId  8 faulted at time(s): 9
+PageId  9 faulted at time(s): 0
+Turnaround Time: 80
+
+process3.txt
+1 Page Faults
+PageId  1 faulted at time(s): 0
+Turnaround Time: 21
+
+process4.txt
+4 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 14
+PageId  3 faulted at time(s): 23
+PageId  4 faulted at time(s): 31
+Turnaround Time: 48
+
+
+***FIXED ALLOCATION LOCAL REPLACEMENT OPTIMAL***
+process1.txt
+9 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 8
+PageId  3 faulted at time(s): 19
+PageId  4 faulted at time(s): 27
+PageId  5 faulted at time(s): 35
+PageId  6 faulted at time(s): 43
+PageId  7 faulted at time(s): 51
+PageId  8 faulted at time(s): 59
+PageId  9 faulted at time(s): 67
+Turnaround Time: 75
+
+process2.txt
+9 Page Faults
+PageId  1 faulted at time(s): 72
+PageId  2 faulted at time(s): 64
+PageId  3 faulted at time(s): 56
+PageId  4 faulted at time(s): 48
+PageId  5 faulted at time(s): 36
+PageId  6 faulted at time(s): 28
+PageId  7 faulted at time(s): 20
+PageId  8 faulted at time(s): 9
+PageId  9 faulted at time(s): 0
+Turnaround Time: 80
+
+process3.txt
+1 Page Faults
+PageId  1 faulted at time(s): 0
+Turnaround Time: 21
+
+process4.txt
+4 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 14
+PageId  3 faulted at time(s): 23
+PageId  4 faulted at time(s): 31
+Turnaround Time: 48
+
+
+***VARIABLE ALLOCATION GLOBAL REPLACEMENT LRU***
+process1.txt
+9 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 8
+PageId  3 faulted at time(s): 19
+PageId  4 faulted at time(s): 27
+PageId  5 faulted at time(s): 35
+PageId  6 faulted at time(s): 43
+PageId  7 faulted at time(s): 51
+PageId  8 faulted at time(s): 59
+PageId  9 faulted at time(s): 67
+Turnaround Time: 75
+
+process2.txt
+9 Page Faults
+PageId  1 faulted at time(s): 72
+PageId  2 faulted at time(s): 64
+PageId  3 faulted at time(s): 56
+PageId  4 faulted at time(s): 48
+PageId  5 faulted at time(s): 36
+PageId  6 faulted at time(s): 28
+PageId  7 faulted at time(s): 20
+PageId  8 faulted at time(s): 9
+PageId  9 faulted at time(s): 0
+Turnaround Time: 80
+
+process3.txt
+1 Page Faults
+PageId  1 faulted at time(s): 0
+Turnaround Time: 21
+
+process4.txt
+4 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 14
+PageId  3 faulted at time(s): 23
+PageId  4 faulted at time(s): 31
+Turnaround Time: 48
+
+
+***VARIABLE ALLOCATION GLOBAL REPLACEMENT CLOCK***
+process1.txt
+9 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 8
+PageId  3 faulted at time(s): 19
+PageId  4 faulted at time(s): 27
+PageId  5 faulted at time(s): 35
+PageId  6 faulted at time(s): 43
+PageId  7 faulted at time(s): 51
+PageId  8 faulted at time(s): 59
+PageId  9 faulted at time(s): 67
+Turnaround Time: 75
+
+process2.txt
+9 Page Faults
+PageId  1 faulted at time(s): 72
+PageId  2 faulted at time(s): 64
+PageId  3 faulted at time(s): 56
+PageId  4 faulted at time(s): 48
+PageId  5 faulted at time(s): 36
+PageId  6 faulted at time(s): 28
+PageId  7 faulted at time(s): 20
+PageId  8 faulted at time(s): 9
+PageId  9 faulted at time(s): 0
+Turnaround Time: 80
+
+process3.txt
+1 Page Faults
+PageId  1 faulted at time(s): 0
+Turnaround Time: 21
+
+process4.txt
+4 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 14
+PageId  3 faulted at time(s): 23
+PageId  4 faulted at time(s): 31
+Turnaround Time: 48
+
+
+***VARIABLE ALLOCATION GLOBAL REPLACEMENT OPTIMAL***
+process1.txt
+9 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 8
+PageId  3 faulted at time(s): 19
+PageId  4 faulted at time(s): 27
+PageId  5 faulted at time(s): 35
+PageId  6 faulted at time(s): 43
+PageId  7 faulted at time(s): 51
+PageId  8 faulted at time(s): 59
+PageId  9 faulted at time(s): 67
+Turnaround Time: 75
+
+process2.txt
+9 Page Faults
+PageId  1 faulted at time(s): 72
+PageId  2 faulted at time(s): 64
+PageId  3 faulted at time(s): 56
+PageId  4 faulted at time(s): 48
+PageId  5 faulted at time(s): 36
+PageId  6 faulted at time(s): 28
+PageId  7 faulted at time(s): 20
+PageId  8 faulted at time(s): 9
+PageId  9 faulted at time(s): 0
+Turnaround Time: 80
+
+process3.txt
+1 Page Faults
+PageId  1 faulted at time(s): 0
+Turnaround Time: 21
+
+process4.txt
+4 Page Faults
+PageId  1 faulted at time(s): 0
+PageId  2 faulted at time(s): 14
+PageId  3 faulted at time(s): 23
+PageId  4 faulted at time(s): 31
+Turnaround Time: 48
