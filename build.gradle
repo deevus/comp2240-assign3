@@ -63,5 +63,6 @@ task zip(type: Zip) {
     from 'Makefile'
     from 'Report.pdf'
     from 'AssessmentItemCoverSheet.pdf'
+    from 'README.md'
     archiveName ('c3185790-assignment3.zip')
 }
