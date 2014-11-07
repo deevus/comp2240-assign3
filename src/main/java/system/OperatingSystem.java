@@ -2,7 +2,6 @@ package system;
 
 import scheduling.*;
 import java.util.*;
-import org.apache.commons.lang.StringUtils;
 
 public class OperatingSystem {
 
@@ -109,13 +108,34 @@ public class OperatingSystem {
       Process p = pf.getProcess();
       //result += String.format("P%02d | %s | %d |", p.getId(), p.getFinishTime(), p.getPageFaults().size());
       result += String.format("P%02d |", p.getId());
-      result += StringUtils.center(Integer.toString(p.getFinishTime()), 17, " ") + "|";
-      result += StringUtils.center(Integer.toString(p.getPageFaults().size()), 10, " ") + "| ";
+      result += center(Integer.toString(p.getFinishTime()), 17, " ") + "|";
+      result += center(Integer.toString(p.getPageFaults().size()), 10, " ") + "| ";
       result += "{";
       for (int i = 0; i < p.getPageFaults().size(); i++) {
         result += String.format("%d%s", p.getPageFaults().get(i).getTick(), (i < p.getPageFaults().size() - 1 ? ", " : "}\r\n"));
       }
     }
+    return result;
+  }
+
+  private String center(String text, int width, String separator) {
+    int mainCenterIndex = width / 2;
+    int textCenterIndex = (text.length() - 1) / 2;
+    int textStartIndex = mainCenterIndex - textCenterIndex - 1;
+
+    String result = "";
+    int i = -1;
+    while (i < (width - 1)) {
+      if (i == textStartIndex) {
+        result += text;
+        i += text.length();
+      }
+      else {
+        result += separator;
+        i++;
+      }
+    }
+
     return result;
   }
 
