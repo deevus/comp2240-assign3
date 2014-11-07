@@ -16,12 +16,17 @@ public class ClockPageReplacement extends PageReplacementAlgorithm {
   @Override
   public Page getPageToRemove(List<Page> pages) {
     Page toRemove = null;
+
+    //the clock cycle
     while (toRemove == null) {
       for (Page p : pages) {
+        //if usebit is zero
         if (p.getUseBit() == false) {
           toRemove = p;
           break;
         }
+
+        //toggle use bit as we go around
         p.setUseBit(!p.getUseBit());
       }
     }

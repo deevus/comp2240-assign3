@@ -17,6 +17,8 @@ public class LRUPageReplacement extends PageReplacementAlgorithm {
   @Override
   public Page getPageToRemove(List<Page> pages) {
     Page lru = null;
+    
+    //find least recently used
     for (Page p: pages) {
       if (lru == null || (p.getTickLastUsed() < lru.getTickLastUsed() && p.isLoaded())) {
         lru = p;

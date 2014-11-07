@@ -25,15 +25,25 @@ public class OperatingSystem {
     this.allocationStrategy.setFrames(frames);
   }
 
+  /**
+   * Runs the operating system with the given processes
+   * @param processes Processes to run
+   */
   public void run(List<system.Process> processes) {
     this.initFrames(processes);
     //this.allocationStrategy.allocatePages(MAX_FRAMES);
+
+    //main OS loop
     this.scheduler.start(processes);
     while (this.scheduler.isRunning()) {
       this.tick();
     }
   }
 
+  /**
+   * Initialise the process frames
+   * @param processes The processes to init
+   */
   public void initFrames(List<Process> processes) {
     for (Process p: processes) {
       ProcessFrame pf = new ProcessFrame(p);
@@ -43,19 +53,32 @@ public class OperatingSystem {
 //    System.out.println(String.format("Init %d process frames.", frames.size()));
   }
 
+  /**
+   * Returns true if the instruction for the given process is paged 
+   * into memory
+   * @param  p The process
+   * @param  i The instruction
+   */
   public boolean isPaged(Process p, int i) {
     ProcessFrame pf = frames.get(frames.indexOf(p));
     return pf.instructionLoaded(i);
   }
 
+  /**
+   * Begin loading a new page into memory
+   * @param p The process
+   * @param i The instruction
+   */
   public void loadInstruction(Process p, int i) {
     //get the process frame for the given process
     ProcessFrame processFrame = frames.get(frames.indexOf(p));
 
-    //check number of pages allocation for process
+    //check pages allocation for process
     if (!processFrame.hasPageFor(i)) {
+      //allocate pages for the process
       allocationStrategy.allocatePages(processFrame);
 
+      //create the new page
       Page page = new Page(p, i);
       page.setTicksTillLoaded(PAGE_LOAD_TIME);
 
@@ -63,6 +86,9 @@ public class OperatingSystem {
     }
   }
 
+  /**
+   * The clock cycle
+   */
   public void tick() {
     this.updatePages(this.scheduler.getCurrentTick());
 
@@ -109,6 +135,9 @@ public class OperatingSystem {
     }
   }
 
+  /**
+   * Generate a summary report string
+   */
   public String report() {
     String result = "PID | Turnaround Time | # Faults | Fault Times\r\n";
     for (ProcessFrame pf: this.frames) {
@@ -144,13 +173,5 @@ public class OperatingSystem {
     }
 
     return result;
-  }
-
-  /**
-   * Event handler to run when a process is finished
-   * @param process The process that has finished
-   */
-  public void onProcessFinished(Process process) {
-    //todo
   }
 }

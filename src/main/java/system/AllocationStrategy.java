@@ -46,6 +46,10 @@ public abstract class AllocationStrategy {
     return this.replacementAlgorithm;
   }
 
+  /**
+   * Allocate pages for a process frame
+   * @param processFrame The process frame to allocate pages for
+   */
   public abstract void allocatePages(ProcessFrame processFrame);
 
   public List<ProcessFrame> getFrames() {

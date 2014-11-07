@@ -64,6 +64,10 @@ public class Process implements Cloneable {
     this.id = id;
   }
 
+  /**
+   * Loads a process from a given file path
+   * @param  filePath The path to a txt file describing a process
+   */
   public static Process fromFile(String filePath) {
     try {
       File f = new File(filePath);

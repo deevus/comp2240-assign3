@@ -21,6 +21,11 @@ public class ProcessFrame {
     this.pages = new ArrayList<Page>();
   }
 
+  /**
+   * Determines if a page exists for the given instruction
+   * The page does not have to be loaded completely
+   * @param  instruction The instruction
+   */
   public boolean hasPageFor(int instruction) {
     return getPageFor(instruction) != null;
   }
@@ -57,6 +62,10 @@ public class ProcessFrame {
     return this.pages.size() >= this.maximumFrames;
   }
 
+  /**
+   * Determines if an instruction is loaded for the process frame
+   * @param  instruction The instruction
+   */
   public boolean instructionLoaded(int instruction) {
     for (Page p: this.pages) {
       if (p.getInstruction() == instruction && p.isLoaded()) return true;
@@ -65,6 +74,11 @@ public class ProcessFrame {
     return false;
   }
 
+  /**
+   * Allows checking of Page or Process objects that are
+   * contained within this Process Frame
+   * @param  other The object to compare
+   */
   @Override
   public boolean equals(Object other) {
     //by process

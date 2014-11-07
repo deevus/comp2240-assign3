@@ -68,6 +68,11 @@ public class Page {
     this.ticksTillLoaded = ticksTillLoaded;
   }
 
+  /**
+   * Allows checking if a process frame or process contains
+   * a page
+   * @param  other The other object to compare
+   */
   @Override
   public boolean equals(Object other) {
     if (other instanceof ProcessFrame) {
