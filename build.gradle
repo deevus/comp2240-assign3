@@ -61,5 +61,7 @@ task zip(type: Zip) {
     from configurations.runtime
     from 'src/main/java'
     from 'Makefile'
+    from 'Report.pdf'
+    from 'AssessmentItemCoverSheet.pdf'
     archiveName ('c3185790-assignment3.zip')
 }
