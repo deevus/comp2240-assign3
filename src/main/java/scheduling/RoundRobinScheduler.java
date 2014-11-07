@@ -1,5 +1,6 @@
 package scheduling;
 
+import java.util.Collection;
 import java.util.Queue;
 import java.util.LinkedList;
 import java.util.List;
@@ -39,9 +40,8 @@ public class RoundRobinScheduler extends Scheduler {
   }
 
   @Override
-  void onTick() { if (currentProcess != null) {
-      timeSliceLeft--;
-
+  void onTick() {
+    if (currentProcess != null) {
       //while there are processes in the ready state
       while (currentProcess.getState() == Process.ProcessState.Ready) {
         //get next instruction
@@ -51,6 +51,7 @@ public class RoundRobinScheduler extends Scheduler {
         if (system.isPaged(currentProcess, nextInstruction)) {
           //execute it
           currentProcess.executeInstruction();
+          timeSliceLeft--;
 
           //call event handler
           this.onExecuteInstruction(currentProcess, nextInstruction);
@@ -68,21 +69,22 @@ public class RoundRobinScheduler extends Scheduler {
           readyQueue.offer(currentProcess);
 
           //get next process
-          currentProcess = readyQueue.poll();
+          timeSliceLeft = TIME_QUANTUM;
+          currentProcess = this.getNextProcess();
         }
       }
 
       //process completed
       if (currentProcess.isDone()) {
 //        System.out.println(String.format("T%d Process %s completed", this.getCurrentTick(), currentProcess));
-        currentProcess.setFinishTime(this.getCurrentTick());
+        currentProcess.setFinishTime(this.getCurrentTick() + 1);
         currentProcess.setState(Process.ProcessState.Finished);
         currentProcess = null;
       }
 
       //out of time
-      else if (timeSliceLeft == 0 || currentProcess.getState() == Process.ProcessState.Blocked) {
-        if (readyQueue.isEmpty()) {
+      else if (timeSliceLeft == 0) {
+        if (readyQueue.isEmpty() || this.allBlocked(this.readyQueue)) {
           timeSliceLeft = TIME_QUANTUM;
         }
         else {
@@ -93,11 +95,32 @@ public class RoundRobinScheduler extends Scheduler {
     }
 
     if (currentProcess == null && !readyQueue.isEmpty()) {
-      currentProcess = readyQueue.poll();
+      currentProcess = this.getNextProcess();
       timeSliceLeft = TIME_QUANTUM;
     }
 
     //stop if all done
     if (readyQueue.isEmpty() && currentProcess == null) stop();
   }
+
+  public boolean allBlocked(Collection<Process> list) {
+    for (Process p: list) {
+      if (p.getState() != Process.ProcessState.Blocked) return false;
+    }
+    return true;
+  }
+
+  public Process getNextProcess() {
+    Process process = readyQueue.peek();
+    for (Process p: readyQueue) {
+      if (p.getState() == Process.ProcessState.Ready) {
+        process = p;
+        break;
+      }
+    }
+
+    readyQueue.remove(process);
+    return process;
+  }
 }
+

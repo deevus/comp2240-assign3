@@ -18,7 +18,6 @@ public class VariableAllocationStrategy extends AllocationStrategy {
     }
 
     //do we need to remove a page?
-    Integer numPages = processFrame.getPages().size();
     if (processFrame.hasMaxPages()) {
       //get all pages
       List<Page> allPages = new ArrayList<>();
