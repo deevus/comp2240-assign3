@@ -22,12 +22,21 @@ public class VariableAllocationStrategy extends AllocationStrategy {
       //get all pages
       List<Page> allPages = new ArrayList<>();
       for (ProcessFrame pf: this.getFrames()) {
-        allPages.addAll(pf.getPages());
+        //only add processes that are done
+        if (!pf.getProcess().isDone())
+          allPages.addAll(pf.getPages());
       }
 
-      Page page = this.getReplacementAlgorithm().getPageToRemove(allPages);
-      ProcessFrame other = page.getProcess().getProcessFrame();
+      //if the total pages is less than max frames
+      if (allPages.size() < getMaxFrames()) {
+        processFrame.setMaximumPages(processFrame.getMaximumPages() + 1);
+        return;
+      }
 
+      //run replacement algorithm
+      Page page = this.getReplacementAlgorithm().getPageToRemove(allPages);
+
+      ProcessFrame other = page.getProcess().getProcessFrame();
       //is the page from another process?
       if (page.getProcess().getProcessFrame() != processFrame) {
         //decrement max pages of other process

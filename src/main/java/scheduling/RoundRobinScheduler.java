@@ -79,6 +79,7 @@ public class RoundRobinScheduler extends Scheduler {
 //        System.out.println(String.format("T%d Process %s completed", this.getCurrentTick(), currentProcess));
         currentProcess.setFinishTime(this.getCurrentTick() + 1);
         currentProcess.setState(Process.ProcessState.Finished);
+        this.onProcessFinished(currentProcess);
         currentProcess = null;
       }
 
@@ -121,6 +122,15 @@ public class RoundRobinScheduler extends Scheduler {
 
     readyQueue.remove(process);
     return process;
+  }
+
+  /**
+   * Event handler that is called when a process
+   * finishes execution
+   * @param process The process that has finished
+   */
+  public void onProcessFinished(Process process) {
+    system.onProcessFinished(process);
   }
 }
 

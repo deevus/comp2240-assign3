@@ -58,7 +58,7 @@ public class OperatingSystem {
   }
 
   public void tick() {
-    this.updatePages();
+    this.updatePages(this.scheduler.getCurrentTick());
 
     this.scheduler.tick();
   }
@@ -85,12 +85,13 @@ public class OperatingSystem {
    * Update any pages that are loading by decrementing
    * their ticksTillLoaded value
    */
-  private void updatePages() {
+  private void updatePages(int currentTick) {
     for (ProcessFrame pf: this.frames) {
       for (Page p: pf.getPages()) {
         if (!p.isLoaded()) {
           int ticks = p.getTicksTillLoaded() - 1;
           p.setTicksTillLoaded(ticks);
+          p.setTickLastUsed(currentTick);
 
           //check if now loaded
           if (ticks == 0) {
@@ -139,4 +140,11 @@ public class OperatingSystem {
     return result;
   }
 
+  /**
+   * Event handler to run when a process is finished
+   * @param process The process that has finished
+   */
+  public void onProcessFinished(Process process) {
+    //todo
+  }
 }
