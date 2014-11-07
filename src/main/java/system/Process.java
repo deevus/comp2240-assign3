@@ -134,6 +134,10 @@ public class Process implements Cloneable {
     return pageFaults;
   }
 
+  /**
+   * Allows checking if a process frame points to this process
+   * @param  other The object to compare
+   */
   @Override
   public boolean equals(Object other) {
     if (other instanceof ProcessFrame) {
