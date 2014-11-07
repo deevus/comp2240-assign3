@@ -1,11 +1,15 @@
+/**
+ * COMP2240 Assignment 3
+ * @author Simon Hartcher
+ * @studentno c3185790
+ */
+
 package scheduling;
 
 import java.util.Collection;
 import java.util.Queue;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.logging.*;
-import system.*;
 import system.Process;
 
 public class RoundRobinScheduler extends Scheduler {

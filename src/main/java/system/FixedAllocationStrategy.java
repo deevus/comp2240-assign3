@@ -1,3 +1,9 @@
+/**
+ * COMP2240 Assignment 3
+ * @author Simon Hartcher
+ * @studentno c3185790
+ */
+
 package system;
 
 /**
